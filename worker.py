@@ -39,7 +39,7 @@ You are an expert Blender Python script generator. Your sole purpose is to creat
 Now, generate the JSON output for the user prompt provided above.
 """
     
-    ollama_url = "http://host.docker.internal:11434/api/generate"
+    ollama_url = "http://ollama:11434/api/generate"
     payload = {
         "model": "codellama",
         "prompt": meta_prompt,

@@ -1,0 +1,66 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies including Blender
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    xz-utils \
+    libgl1-mesa-glx \
+    libglu1-mesa \
+    libxrender1 \
+    libxext6 \
+    libxi6 \
+    libxrandr2 \
+    libxfixes3 \
+    libxss1 \
+    libgconf-2-4 \
+    libnss3 \
+    libcups2 \
+    libasound2 \
+    libpangocairo-1.0-0 \
+    libatk1.0-0 \
+    libcairo-gobject2 \
+    libgtk-3-0 \
+    libgdk-pixbuf2.0-0 \
+    libdrm2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libpango-1.0-0 \
+    libcairo2 \
+    libasound2 \
+    libatspi2.0-0 \
+    libgtk-3-0 \
+    libgdk-pixbuf2.0-0 \
+    libdrm2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libpango-1.0-0 \
+    libcairo2 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download and install Blender
+RUN wget https://download.blender.org/release/Blender4.0/blender-4.0.2-linux-x64.tar.xz \
+    && tar -xf blender-4.0.2-linux-x64.tar.xz \
+    && mv blender-4.0.2-linux-x64 /usr/local/blender \
+    && rm blender-4.0.2-linux-x64.tar.xz
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application files
+COPY . .
+
+# Create models directory
+RUN mkdir -p /app/models
+
+# Run Celery worker
+CMD ["celery", "-A", "worker", "worker", "--loglevel=info"] 

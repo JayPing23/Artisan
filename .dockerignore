@@ -1,0 +1,12 @@
+.git
+.gitignore
+.gitattributes
+README.md
+.env
+*.pyc
+__pycache__
+.pytest_cache
+.coverage
+htmlcov
+.DS_Store
+Thumbs.db 
