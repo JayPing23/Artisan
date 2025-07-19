@@ -53,7 +53,7 @@ Artisan uses a sophisticated AI-to-Blender-Script pipeline that combines the pow
 - **8GB+ RAM** - Required for Ollama and Blender
 - **10GB+ Free Disk Space** - For models and Docker images
 
-### Installation & Deployment
+### Local Installation & Deployment
 
 1. **Clone the Repository**
    ```bash
@@ -75,6 +75,35 @@ Artisan uses a sophisticated AI-to-Blender-Script pipeline that combines the pow
    - Open http://localhost:8000 in your browser
    - Enter a prompt like "a low-poly rocket ship"
    - Click Generate and wait for your 3D model!
+
+### ☁️ Cloud Deployment
+
+#### Oracle Cloud Free Tier (Recommended)
+
+Oracle Cloud Free Tier is perfect for hosting Artisan with generous resources:
+- **4 ARM VMs with 24GB RAM each** (Always Free)
+- **200GB storage** and **10TB bandwidth**
+- **No expiration** - truly free forever
+
+**Quick Deploy:**
+```bash
+# 1. Create Oracle Cloud account at cloud.oracle.com
+# 2. Launch an ARM-based VM (VM.Standard.A1.Flex)
+# 3. SSH into your instance and run:
+wget https://raw.githubusercontent.com/your-repo/Artisan/main/deploy-oracle.sh
+chmod +x deploy-oracle.sh
+./deploy-oracle.sh
+```
+
+**Manual Deploy:**
+See [oracle-deployment.md](oracle-deployment.md) for detailed step-by-step instructions.
+
+#### Other Cloud Providers
+
+- **AWS Free Tier** - 12 months free, then pay-as-you-go
+- **Google Cloud Free Tier** - $300 credit for 90 days
+- **Azure Free Tier** - $200 credit for 30 days
+- **DigitalOcean** - $200 credit for 60 days
 
 ## 📖 Usage Guide
 
