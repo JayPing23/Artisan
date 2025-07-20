@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artisan: AI Text-to-3D Generator</title>
-    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body class="modern-ui-bg">
@@ -34,14 +29,17 @@
             </div>
             <button type="submit" id="generate-button" class="modern-btn">
                 <span id="generate-btn-text">Generate</span>
-                <span id="generate-btn-spinner" class="spinner" style="display:none; margin-left:8px;">⏳</span>
+                <span id="generate-btn-spinner" class="spinner" style="display:none; margin-left:8px;"></span>
             </button>
         </form>
         <div id="result-section" class="modern-card">
+            <div id="status-container">
+                <div id="status-text"></div>
+            </div>
             <div id="model-viewer-container"></div>
             <a id="download-link" class="modern-btn" style="display:none;" download>Download Model</a>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
