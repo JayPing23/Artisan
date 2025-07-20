@@ -4,7 +4,8 @@ body.modern-ui-bg {
   min-height: 100vh;
   font-family: 'Inter', 'IBM Plex Mono', monospace, sans-serif;
   color: #f4f4f8;
-  animation: gradientMove 12s ease-in-out infinite alternate;
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes gradientMove {
@@ -21,47 +22,12 @@ body.modern-ui-bg {
   gap: 32px;
 }
 
-.modern-card {
-  background: rgba(36, 40, 59, 0.85);
-  border-radius: 24px;
-  box-shadow: 0 6px 32px 0 rgba(80, 80, 160, 0.18), 0 1.5px 6px 0 rgba(80, 80, 160, 0.12);
-  padding: 32px 28px;
-  margin-bottom: 0;
-  border: 1.5px solid #393e6e;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  backdrop-filter: blur(8px) saturate(120%);
-}
-
-textarea#prompt, .modern-card input[type="text"] {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1.5px solid #7c83fd;
-  background: rgba(44, 48, 70, 0.92);
-  color: #f4f4f8;
-  font-size: 1.1rem;
-  margin-bottom: 0;
-  margin-top: 0;
-  outline: none;
-  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
-  box-shadow: 0 1px 4px 0 rgba(80, 80, 160, 0.10);
-  backdrop-filter: blur(4px) saturate(120%);
-}
-
-textarea#prompt:focus, .modern-card input[type="text"]:focus {
-  border: 1.5px solid #96f2d7;
-  background: rgba(60, 65, 100, 0.98);
-}
-
-/* Main Title Styling */
 .main-title {
   text-align: center;
-  font-size: 2.1rem;
+  font-size: 2.3rem;
   font-weight: 700;
   color: #96f2d7;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   letter-spacing: 0.02em;
   text-shadow: 0 2px 12px rgba(124, 131, 253, 0.12);
 }
@@ -71,7 +37,7 @@ textarea#prompt:focus, .modern-card input[type="text"]:focus {
   background: linear-gradient(90deg, #7c83fd 0%, #96f2d7 100%);
   color: #232946;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.08rem;
   border: none;
   border-radius: 8px;
   padding: 8px 22px;
@@ -80,28 +46,29 @@ textarea#prompt:focus, .modern-card input[type="text"]:focus {
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
-.advanced-toggle:hover {
+.advanced-toggle:hover, .advanced-toggle:focus {
   background: linear-gradient(90deg, #96f2d7 0%, #7c83fd 100%);
   color: #232946;
   box-shadow: 0 2px 8px 0 rgba(124, 131, 253, 0.18);
+  outline: 2px solid #96f2d7;
 }
 
 .advanced-section {
   background: rgba(44, 48, 70, 0.85);
   border-radius: 12px;
-  padding: 14px 10px 8px 10px;
+  padding: 12px 8px 6px 8px;
   margin-bottom: 0;
   margin-top: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
   border: 1.5px solid #393e6e;
   box-shadow: 0 1px 4px 0 rgba(80, 80, 160, 0.10);
   backdrop-filter: blur(4px) saturate(120%);
   max-width: 100%;
 }
 .advanced-section input[type="text"] {
-  background: rgba(44, 48, 70, 0.92);
+  background: #232946;
   color: #f4f4f8;
   border: 1.5px solid #7c83fd;
   border-radius: 8px;
@@ -113,14 +80,14 @@ textarea#prompt:focus, .modern-card input[type="text"]:focus {
 }
 .advanced-section input[type="text"]:focus {
   border: 1.5px solid #96f2d7;
-  background: rgba(60, 65, 100, 0.98);
+  background: #2a2e4a;
 }
 
 .modern-btn {
   background: linear-gradient(90deg, #7c83fd 0%, #96f2d7 100%);
   color: #232946;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.13rem;
   border: none;
   border-radius: 12px;
   padding: 14px 0;
@@ -131,22 +98,27 @@ textarea#prompt:focus, .modern-card input[type="text"]:focus {
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   width: 100%;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
-.modern-btn:hover {
+.modern-btn:hover, .modern-btn:focus {
   background: linear-gradient(90deg, #96f2d7 0%, #7c83fd 100%);
   color: #232946;
   box-shadow: 0 4px 16px 0 rgba(124, 131, 253, 0.22);
+  outline: 2px solid #96f2d7;
 }
 
 #model-viewer-container {
   width: 100%;
-  min-height: 260px;
+  min-height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(44, 48, 70, 0.85);
-  border-radius: 16px;
-  margin-bottom: 18px;
+  background: #232946;
+  border-radius: 14px;
+  margin-bottom: 14px;
   border: 1.5px solid #393e6e;
   box-shadow: 0 1px 4px 0 rgba(80, 80, 160, 0.10);
   backdrop-filter: blur(4px) saturate(120%);
@@ -161,6 +133,17 @@ textarea#prompt:focus, .modern-card input[type="text"]:focus {
 
 label, .modern-card, .modern-btn, .advanced-toggle, textarea, input[type="text"] {
   color: #f4f4f8 !important;
+}
+
+#status-container {
+  margin-bottom: 10px;
+  min-height: 32px;
+}
+#status-text {
+  font-size: 1.08rem;
+  color: #96f2d7;
+  text-align: center;
+  min-height: 24px;
 }
 
 /* Subtle animated accent bar */
@@ -195,7 +178,6 @@ label, .modern-card, .modern-btn, .advanced-toggle, textarea, input[type="text"]
   vertical-align: middle;
   margin-left: 8px;
   background: none;
-  /* Hide the ⏳ text */
   color: transparent;
   font-size: 0;
 }
@@ -204,14 +186,56 @@ label, .modern-card, .modern-btn, .advanced-toggle, textarea, input[type="text"]
   100% { transform: rotate(360deg); }
 }
 
+/* Fix form layout: stack textarea and button vertically */
+#generate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+textarea#prompt {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.advanced-toggle {
+  width: fit-content;
+  align-self: flex-end;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.modern-btn {
+  margin-top: 10px;
+}
+
+#result-section {
+  margin-top: 18px;
+  align-items: stretch;
+}
+
 @media (max-width: 600px) {
   .container {
     padding: 16px 0 8px 0;
   }
   .modern-card {
-    padding: 18px 8px;
+    padding: 14px 4px 8px 4px;
   }
   #model-viewer-container {
-    min-height: 180px;
+    min-height: 120px;
+  }
+  .main-title {
+    font-size: 1.3rem;
+  }
+  #generate-form {
+    gap: 8px;
+  }
+  .advanced-toggle {
+    width: 100%;
+    align-self: stretch;
   }
 }
