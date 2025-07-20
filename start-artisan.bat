@@ -1,37 +1,44 @@
 @echo off
 echo ========================================
-echo    Artisan 3D Generator - Starting
+echo    Artisan AI Text-to-3D Generator
 echo ========================================
 echo.
 
-echo [1/4] Building and starting all services...
-docker-compose up --build -d
+echo [1/4] Stopping any existing containers...
+docker-compose down
 
 echo.
-echo [2/4] Waiting for services to start...
-timeout /t 10 /nobreak > nul
+echo [2/4] Pulling latest images...
+docker-compose pull
 
 echo.
-echo [3/4] Installing Code Llama model (first time only)...
-docker-compose exec -T ollama ollama pull codellama
+echo [3/4] Starting all services...
+docker-compose up -d
 
 echo.
-echo [4/4] Checking service status...
+echo [4/4] Waiting for services to be ready...
+timeout /t 10 /nobreak >nul
+
+echo.
+echo ========================================
+echo    Services Status
+echo ========================================
 docker-compose ps
 
 echo.
 echo ========================================
-echo    Artisan is now running!
+echo    Ready to Use!
 echo ========================================
+echo Web Interface: http://localhost:8000
 echo.
-echo 🌐 Open your browser and go to:
-echo    http://localhost:8000
+echo To test the system:
+echo   python debug_artisan.py
 echo.
-echo 📋 Useful commands:
-echo    View logs: docker-compose logs -f
-echo    Stop services: docker-compose down
-echo    Restart: docker-compose restart
+echo To view logs:
+echo   docker-compose logs -f web
+echo   docker-compose logs -f worker
 echo.
-echo 🎨 Happy 3D generating!
+echo To stop services:
+echo   docker-compose down
 echo.
 pause 

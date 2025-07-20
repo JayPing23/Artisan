@@ -2,11 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies including Blender
+# Install system dependencies including OpenSCAD
 RUN apt-get update && apt-get install -y \
     curl \
     wget \
-    xz-utils \
+    openscad \
     libgl1-mesa-glx \
     libglu1-mesa \
     libxrender1 \
@@ -46,15 +46,12 @@ RUN apt-get update && apt-get install -y \
     libcairo2 \
     && rm -rf /var/lib/apt/lists/*
 
-# Download and install Blender
-RUN wget https://download.blender.org/release/Blender4.0/blender-4.0.2-linux-x64.tar.xz \
-    && tar -xf blender-4.0.2-linux-x64.tar.xz \
-    && mv blender-4.0.2-linux-x64 /usr/local/blender \
-    && rm blender-4.0.2-linux-x64.tar.xz
-
 # Copy requirements and install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Install additional Python packages for 3D processing
+RUN pip install --no-cache-dir trimesh numpy
 
 # Copy application files
 COPY . .

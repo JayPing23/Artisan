@@ -11,20 +11,6 @@ services:
     networks:
       - artisan_network
 
-  ollama:
-    image: ollama/ollama:latest
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          memory: 8G
-    networks:
-      - artisan_network
-
   web:
     build:
       context: .
@@ -33,7 +19,6 @@ services:
       - "8000:8000"
     depends_on:
       - redis
-      - ollama
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
@@ -49,7 +34,6 @@ services:
       dockerfile: Dockerfile.worker
     depends_on:
       - redis
-      - ollama
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
@@ -65,7 +49,6 @@ services:
 
 volumes:
   redis_data:
-  ollama_data:
   model_data:
 
 networks:

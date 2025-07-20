@@ -7,42 +7,41 @@
     <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans flex items-center justify-center min-h-screen p-4">
-
-    <div class="w-full max-w-2xl mx-auto">
-        <header class="text-center mb-8">
-            <h1 class="text-4xl font-mono font-medium text-white">Artisan</h1>
-            <p class="text-lg text-gray-400">AI Text-to-3D Generator</p>
-        </header>
-
-        <main>
-            <form id="generate-form" class="mb-8">
-                <div class="relative">
-                    <textarea id="prompt-input"
-                        class="w-full h-32 p-4 bg-gray-800 border border-gray-700 rounded-lg resize-none focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-shadow duration-200 text-gray-200 placeholder-gray-500"
-                        placeholder="Describe your 3D model... e.g., a low-poly rocket ship, a stylized ancient sword"></textarea>
-                </div>
-                <button type="submit" id="generate-button"
-                    class="mt-4 w-full flex items-center justify-center gap-2 bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-500 active:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed transition-all duration-200">
-                    <i data-lucide="wand-2" class="w-5 h-5"></i>
-                    <span>Generate</span>
-                </button>
-            </form>
-
-            <section id="status-result-section" class="min-h-[300px] w-full flex flex-col items-center justify-center bg-gray-800/50 border border-dashed border-gray-700 rounded-lg p-6 transition-all duration-300">
-                <div id="status-container" class="text-center text-gray-400">
-                    <p id="status-text">Your generated model will appear here.</p>
-                </div>
-                <div id="result-container" class="w-full h-full"></div>
-            </section>
-        </main>
+<body class="modern-ui-bg">
+    <div class="container">
+        <h1 class="main-title">Artisan: AI Text-to-3D Generator</h1>
+        <form id="generate-form" class="modern-card">
+            <textarea id="prompt" name="prompt" placeholder="Describe your 3D model (e.g., 'tree', 'spaceship', 'modern house')" required></textarea>
+            <button type="button" id="toggle-advanced" class="advanced-toggle">Advanced Options ▼</button>
+            <div id="advanced-options" class="advanced-section" style="display:none;">
+                <input type="text" id="style" name="style" placeholder="Style (e.g., low poly, realistic, cartoon)" />
+                <input type="text" id="environment" name="environment" placeholder="Environment/Context (e.g., forest, space)" />
+                <input type="text" id="lighting" name="lighting" placeholder="Lighting/Shadow Effects (e.g., soft, dramatic)" />
+                <input type="text" id="color_scheme" name="color_scheme" placeholder="Color Scheme (e.g., pastel, vibrant, monochrome)" />
+                <input type="text" id="special_features" name="special_features" placeholder="Special Features/Details (e.g., windows, fins, leaves)" />
+                <input type="text" id="scale" name="scale" placeholder="Scale/Dimensions (e.g., small, 10x10x10)" />
+                <input type="text" id="level_of_detail" name="level_of_detail" placeholder="Level of Detail (e.g., simple, detailed)" />
+                <input type="text" id="material_appearance" name="material_appearance" placeholder="Material Appearance (e.g., metallic, matte)" />
+                <input type="text" id="symmetry" name="symmetry" placeholder="Symmetry/Asymmetry (e.g., symmetrical, asymmetrical)" />
+                <input type="text" id="animation" name="animation" placeholder="Animation/Movement (if any)" />
+                <input type="text" id="output_format" name="output_format" placeholder="Output Format (e.g., GLB, STL)" />
+                <input type="text" id="other_requirements" name="other_requirements" placeholder="Other Requirements" />
+            </div>
+            <button type="submit" id="generate-button" class="modern-btn">
+                <span id="generate-btn-text">Generate</span>
+                <span id="generate-btn-spinner" class="spinner" style="display:none; margin-left:8px;">⏳</span>
+            </button>
+        </form>
+        <div id="result-section" class="modern-card">
+            <div id="model-viewer-container"></div>
+            <a id="download-link" class="modern-btn" style="display:none;" download>Download Model</a>
+        </div>
     </div>
-
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
